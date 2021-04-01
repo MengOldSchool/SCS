@@ -1,8 +1,11 @@
 package simulator;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+
+import org.junit.Test;
 
 
 
@@ -11,27 +14,24 @@ import java.util.List;
 public class report extends command {
 	
 	//private HashMap<String, List<Integer>> report = new HashMap<>();
-	private HashMap<String, int[]> result = new HashMap<>();
-	private static final String[] Items = { 
-			"communication overhead", 
-			"fuel usage",
-			"unclear squares",
-			"destruciton of protected tree",
-			"paint damagee to builldozer"
-			
-	};
-	
-	private int[][] value = {{0,0},{0,0},{0,0},{0,0},{0,0}};
+	//Two Result tables 
+	//result_quantity: ItemName, Quality, 
+	//result_cost: ItemName, Cost
+	private HashMap<String, Integer> result_quantity = new HashMap<>();
+	private HashMap<String, Integer> result_cost = new HashMap<>();
 		
 	/*
-	 * constructor
+	 * constructor: init result quantity and result cost tables
 	 */
 	public report() {
-		int[] init_value = {0,0};
-		result.put(ActivityName[0], init_value);
-	}
-
 		
+		for (int i=0; i < (super.ItemName).length; i++){
+			result_quantity.put((super.ItemName)[i], 0);
+			result_cost.put((super.ItemName)[i], 0);
+			
+		}
+	}
+	
 	
 	/*
 	 * method: generate the report
@@ -41,14 +41,13 @@ public class report extends command {
 		int total_cost = 0;
 		
 		//print out the title 
-		System.out.printf("%-32s%10s%16s%n", "Item", "Quality", "Cost");
+		System.out.printf("%-32s%10s%16s%n", "Item", "Quantity", "Cost");
 						
 	
 		//print out the whole table - Items & Value
-		for (int i = 0; i < super.ItemName.length; i++) {
-			//System.out.println(Items[i]);
-			System.out.printf("%-32s%10d%16d%n", super.ItemName[i], value[i][0], value[i][1]);
-			total_cost = total_cost + value[i][1];
+		for (int i = 0; i < result_cost.size(); i++) {
+			System.out.printf("%-32s%10d%16d%n", super.ItemName[i], result_quantity.get(ItemName[i]), result_cost.get(ItemName[i]));
+			total_cost = total_cost + result_cost.get(super.ItemName[i]);
 		}
 		
 		//print out ---
@@ -61,12 +60,43 @@ public class report extends command {
 	}
 	
 	/*
-	 * update the report
+	 * update the result for operation cost
 	 */
-	public void updateReport(int idx, int quality, int cost) {
-		value[idx][0] = value[idx][0] + quality;
-		value[idx][1] = value[idx][1] + cost; 
-	}
+	public void operationCost(String operation) {
 		
+		int cost= result_cost.get(operation) + (super.ItemCost).get(operation);
+	
+		result_cost.put(operation, cost);
+		result_quantity.put(operation, 1);
+	}
+	
+	/*
+	 * update the result for activity fuel
+	 */
+	public void activityFuel(String activity) {
+		//get item to be updated in the result tables - Fuel Item
+		String fuel_item = super.ItemName[1];
+		
+		//calculate the new fuel consumption
+		int fuel = result_cost.get(fuel_item) + (super.ActivityFuel).get(activity);
+		//update the result tables
+		result_cost.put(fuel_item, fuel);
+		result_quantity.put(fuel_item, 1);
+	}
+
+
+	@Test
+	public HashMap<String, Integer> getResult_quantity() {
+		return result_quantity;
+	}
+
+
+	@Test
+	public HashMap<String, Integer> getResult_cost() {
+		return result_cost;
+	}
+
+	
+	
 
 }
