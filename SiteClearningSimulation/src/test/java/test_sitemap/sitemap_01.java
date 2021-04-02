@@ -13,10 +13,8 @@ public class sitemap_01 {
 
 	@Test
 	public void test() {
-		char[][] map;
 		sitemap testObj = new sitemap();
-		map = testObj.getMyMap();
-		testObj.showMap(map);
+		testObj.showMap();
 		//System.out.println(map);
 		
 		
@@ -27,8 +25,8 @@ public class sitemap_01 {
 		
 		try {
 			sitemap testObj2 = new sitemap(f);
-			map = testObj2.getMyMap();
-			testObj2.showMap(map);
+			
+			testObj2.showMap();
 			//System.out.println(newMap[2][1]);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

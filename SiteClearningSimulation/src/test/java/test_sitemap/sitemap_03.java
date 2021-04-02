@@ -14,19 +14,16 @@ public class sitemap_03 {
 	@Test
 	public void test() {
 		String localDir = System.getProperty("user.dir");	
-		char[][] map;
-			
 		
 		File f = new File(localDir + "//src//data//siteMap.txt");
 		
 		try {
 			sitemap testObj = new sitemap(f);
-			map = testObj.getMyMap();
-			testObj.showMap(map);
+			testObj.showMap();
 			
 			boolean result = testObj.updateMap(0, 3);
 			System.out.println();
-			testObj.showMap(map);
+			testObj.showMap();
 			
 			assertEquals(result, true);
 			

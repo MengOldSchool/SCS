@@ -14,15 +14,12 @@ public class sitemap_02 {
 	@Test
 	public void test() {
 		String localDir = System.getProperty("user.dir");	
-		char[][] map;
-			
 		
 		File f = new File(localDir + "//src//data//siteMap.txt");
 		
 		try {
 			sitemap testObj2 = new sitemap(f);
-			map = testObj2.getMyMap();
-			testObj2.showMap(map);
+			testObj2.showMap();
 			//System.out.println(newMap[2][1]);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

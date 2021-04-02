@@ -10,7 +10,7 @@ import org.junit.Test;
 
 /************
  * 
- * @author meng
+ * @author Meng
  * create sitemap - 2d char array
  * size of row --> max of pos_x + 1
  * size of column -> max of pos_y + 1
@@ -100,10 +100,10 @@ public class sitemap {
 	/*
 	 * method to show the map
 	 */
-	public void showMap(char[][] map) {
-		for (int row=0; row<map.length; row++) {
-			for (int col=0; col<map[row].length; col++) {
-				System.out.print(map[row][col]);
+	public void showMap() {
+		for (int row=0; row<this.myMap.length; row++) {
+			for (int col=0; col<this.myMap[row].length; col++) {
+				System.out.print(this.myMap[row][col]);
 			}
 			System.out.println();
 		}
@@ -148,11 +148,18 @@ public class sitemap {
 	public int getSite_size_column() {
 		return site_size_column;
 	}
+	
+	@Test
+	/*
+	 * test method, setup a test map
+	 */
+	public void setTestMap(char[][] testMap, int row_size, int col_size) {
+		myMap = testMap;
+		site_size_row = row_size;
+		site_size_column = col_size;
+	}
 
-	
-
-	
-	
+		
 
 	
 }

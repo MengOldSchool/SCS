@@ -25,13 +25,12 @@ public class sitemap_05 {
 		
 		try {
 			sitemap testObj = new sitemap(f);
-			map = testObj.getMyMap();
-			testObj.showMap(map);
+			testObj.showMap();
 			
 			//test: get the number of unclear land
 			int numUnCleLand = testObj.getNumUnclearedLand();
 			System.out.println();
-			testObj.showMap(map);
+			testObj.showMap();
 			
 			assertEquals(numUnCleLand, 15);
 			
@@ -39,7 +38,7 @@ public class sitemap_05 {
 			boolean result = testObj.updateMap(2, 2);
 			numUnCleLand = testObj.getNumUnclearedLand();
 			System.out.println();
-			testObj.showMap(map);
+			testObj.showMap();
 			
 			assertEquals(result, true);
 			assertEquals(numUnCleLand, 14);
@@ -49,7 +48,7 @@ public class sitemap_05 {
 			result = testObj.updateMap(0, 3);
 			numUnCleLand = testObj.getNumUnclearedLand();
 			System.out.println();
-			testObj.showMap(map);
+			testObj.showMap();
 								
 			assertEquals(result, true);
 			assertEquals(numUnCleLand, 13);
