@@ -2,13 +2,15 @@ package simulator;
 
 import java.util.HashMap;
 
+import org.junit.Test;
+
+/*
+ * @Meng,
+ * declare Activity vs Fuel Table
+ * declare Operation(Item) vs Cost Table
+ */
+
 public class command {
-	final int[] item_comm_overhead = {0, 1};
-	final int[] item_fuel = {1, 1};
-	final int[] item_unclear_square = {2, 3};
-	final int[] item_des_res_tree = {3, 10};
-	final int[] item_repare = {4, 2};
-	
 	//Activity Table
 	//Activity vs Fuel Usage
 	final HashMap <String, Integer> ActivityFuel = new HashMap<>();
@@ -42,7 +44,7 @@ public class command {
 		ItemCost.put(ItemName[1], 1);
 		ItemCost.put(ItemName[2], 3);
 		ItemCost.put(ItemName[3], 10);
-		ItemCost.put(ItemName[0], 2);
+		ItemCost.put(ItemName[4], 2);
 		
 	}
 
@@ -58,4 +60,12 @@ public class command {
 	
 	public void printReport() {};
 	
+	@Test
+	public HashMap<String, Integer> getActivityFuelTable() {
+		return ActivityFuel;
+	}
+	@Test
+	public HashMap<String, Integer> getItemCostTable() {
+		return ItemCost;
+	}
 }
