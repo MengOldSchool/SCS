@@ -18,8 +18,8 @@ public class bulldozer_advance_03 {
 		int y = testObj.getPos_y();
 		
 		assertEquals(180, dir);
-		assertEquals(-2, x);
-		assertEquals(1, y);
+		assertEquals(1, x);
+		assertEquals(-2, y);
 	}
 
 }

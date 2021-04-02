@@ -20,8 +20,8 @@ public class bulldozer_quit_01 {
 		
 			
 		assertEquals(0, dir);
-		assertEquals(-1, x);
-		assertEquals(0, y);
+		assertEquals(0, x);
+		assertEquals(-1, y);
 	}
 
 }
