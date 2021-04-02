@@ -2,29 +2,27 @@ package simulator;
 
 import java.util.Arrays;
 
+/*
+ * @Meng
+ * move bulldover forward, update the map, the result accordingly
+ * return false: command exit due to 1)hit reserved tree, 2)out of boundary 
+ */
+
 public class command_advance extends command{
 	
-	private boolean CompleteSucces;
-	private int credit;
-	
+		
 	public command_advance() {
-		this.CompleteSucces = true;
-		this.credit = 1; //by default, 1 credit for a new command
+	
 	}
 	
-	public void move_forward (bulldozer veh, sitemap map, report cost, int step) {
+	public boolean move_forward (bulldozer veh, sitemap map, report result, int step) {
 		
-		int cur_pos_x;
-		int cur_pos_y;
 		int new_pos_x;
 		int new_pos_y;
 		int site_size_row;
 		int site_size_col;
 		char land_type;
-		
-		//get current x, y of bulldozer
-		cur_pos_x = veh.getPos_x();
-		cur_pos_y = veh.getPos_y();
+		boolean CompleteSucces = true;
 		
 		//get site size, (row - 1) -> maximum of pos_x
 		//get site size, (col - 1) -> maximum of pos_y
@@ -32,56 +30,107 @@ public class command_advance extends command{
 		site_size_col = map.getSite_size_column();
 		
 	
+		//update the result to include communication overhead
+		result.operationCost(OpTypeEnum.OpComm.value);
+		
 		//advance one step at a time
-		for (int i=0; i<=step; i++) {
+		for (int i=0; i< step; i++) {
 			veh.advance(1);
 			new_pos_x = veh.getPos_x();
 			new_pos_y = veh.getPos_y();
-			land_type = map.getLandType(cur_pos_x, cur_pos_y);
 			
 			//check if it is outside boundary, if so, exit advance loop
-			if (!insideSite(new_pos_y, new_pos_y, site_size_row, site_size_col)) {
-				this.CompleteSucces = false;
+			if (!insideSite(new_pos_x, new_pos_y, site_size_row, site_size_col)) {
+				//update the flag, set to false
+				CompleteSucces = false;
+				System.out.println("debug0");	
+				//update the cost for uncleared land
+				int numUncleardLand = map.getNumUnclearedLand();
+				result.operationCost(numUncleardLand);
 				break;
+			}
+			else {
+				//within in site, check out the land type
+				land_type = map.getLandType(new_pos_x, new_pos_y);
 			}
 			
 			//check if hits a reserve tree, if so, exit advance loop
 			if ( land_type == 'T') {
-				this.CompleteSucces = false;
-				this.credit = this.credit + 10;
+				CompleteSucces = false;
+				//hit a reserved tree, update the operation cost to the result
+				result.operationCost(OpTypeEnum.OpDesResTree.value);
+				
+				//update the cost for uncleared land
+				int numUncleardLand = map.getNumUnclearedLand();
+				result.operationCost(numUncleardLand);
+				
 				break;
 			}
 			
 			//check if this is the last step, if not, check if the tree is hit
-			if (i < step) {
+			if (i < (step-1)) {
+				//not the last step, if hit a tree, an extra operation cost incurred
 				if (land_type == 't') {
-					cost.updateReport(super.item_repare[0], 1, super.item_repare[1]);
+					//hit a tree and repairing paint damage required
+					System.out.println("debug01");
+					result.operationCost(OpTypeEnum.OpRepDmg.value);
+				}
+				else if(land_type == 'o') {
+					//visiting a cleared land
+					System.out.println("debug02");
+					result.activityFuel(ActTypeEnum.ActVisCldLd.value);
+				}
+				else if(land_type == 'r') {
+					//visiting rocky land, so clear it, update the map
+					System.out.println("debug03");
+					result.activityFuel(ActTypeEnum.ActClrRL.value);
+					map.updateMap(new_pos_x, new_pos_y);
 				}
 			}
 			else {
-				if(land_type == 't') {
-					cost.updateReport(super.item_fuel[0], 1, 1);
+				//this is the end of operation, conduct the activity based on the type of the land
+				
+				if(land_type == 'o') {
+					//clearing plain land
+					System.out.println("debug04");
+					result.activityFuel(ActTypeEnum.ActClrPL.value);				
+				}
+				else if(land_type == 'r') {
+					//clearing rocky land, update the map
+					System.out.println("debug05");
+					result.activityFuel(ActTypeEnum.ActClrRL.value);
+					map.updateMap(new_pos_x, new_pos_y);
+				}
+				else if(land_type == 't') {
+					//clearing tree, update the map
+					System.out.println("debug06");
+					result.activityFuel(ActTypeEnum.ActClrTree.value);
+					map.updateMap(new_pos_x, new_pos_y);
 				}
 			}
 			
 		}
+		return CompleteSucces;
 	}
 	
+	/*
+	 * private method to check if bulldozer is inside the site
+	 */
 	private boolean insideSite(int x, int y, int site_row, int site_col) {
 		
-		if (x<0 || x>=site_row) {
+	
+		if (x < 0 || x>= site_row) {
 			return false;
+			
 		}
-		else if (y<=0 || y>=site_col) {
+		else if (y<0 || y>= site_col) {
 			return false;
 		}
 		
 		return true;
 	}
 	
-	private int activity(String act) {
-		return super.ActivityFuel.get(act);
-	}
+	
 }
 
 
