@@ -75,7 +75,7 @@ public class sitemap {
 	 * return true if the update is successful
 	 */
 	public boolean updateMap(int pos_x, int pos_y) {
-		//check if the update is alowed
+		//check if the update is allowed
 		if (pos_x <= (this.site_size_row -1) && pos_y <=(this.site_size_column - 1)) {
 			if (this.myMap[pos_x][pos_y] != 'T'){
 				this.myMap[pos_x][ pos_y] = 'o';
@@ -104,6 +104,23 @@ public class sitemap {
 		}
 	}
 	
+	
+	/*
+	 * get the number of uncleared squares
+	 */
+	public int getNumUnclearedLand() {
+		int numUnclearedLand = 0;
+		
+		for (int i=0; i<site_size_row; i++) {
+			for (int j=0; j<site_size_column; j++) {
+				if (myMap[i][j] == 'r' || myMap[i][j] == 't') {
+					numUnclearedLand ++;
+				}
+			}
+		}
+		
+		return numUnclearedLand;
+	}
 	
 	/*
 	 * get the type of land
