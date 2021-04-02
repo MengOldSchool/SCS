@@ -27,7 +27,7 @@ public class report_test_02 {
 		 */
 		String[] expect_item = new String[4];
 		expect_item[0]= "Cleaning plain land";
-		expect_item[1]= "Visting any land that has already been cleard\"";
+		expect_item[1]= "Visting any land that has already been cleard";
 		expect_item[2]= "Clearning rocky land";
 		expect_item[3]= "Clearning land containg a tree";
 				
