@@ -7,7 +7,13 @@ import java.util.List;
 
 import org.junit.Test;
 
-
+/*
+ * @Meng
+ * report class:
+ * calculate costs and fuel usage based on Operation and Activity type
+ * update the result
+ * generate the final report
+ */
 
 
 
@@ -28,7 +34,6 @@ public class report extends command {
 		for (int i=0; i < (super.ItemName).length; i++){
 			result_quantity.put((super.ItemName)[i], 0);
 			result_cost.put((super.ItemName)[i], 0);
-			
 		}
 	}
 	
@@ -42,7 +47,6 @@ public class report extends command {
 		
 		//print out the title 
 		System.out.printf("%-32s%10s%16s%n", "Item", "Quantity", "Cost");
-						
 	
 		//print out the whole table - Items & Value
 		for (int i = 0; i < result_cost.size(); i++) {
@@ -90,7 +94,7 @@ public class report extends command {
 		
 		//calculate the new fuel consumption
 		int fuel = result_cost.get(fuel_item) + (super.ActivityFuel).get(activity);
-		int quantity = result_quantity.get(fuel_item) + fuel;
+		int quantity = result_quantity.get(fuel_item) + (super.ActivityFuel).get(activity);
 		//update the result tables
 		result_cost.put(fuel_item, fuel);
 		result_quantity.put(fuel_item, quantity);
