@@ -54,9 +54,7 @@ public class test_command_quit_01 {
 		    expecteds.put(expect_item[4], expect_cost[4]);
 			
 			//evaluation 
-		    
-		    char[][] myMap = test_map.getMyMap();
-			test_map.showMap(myMap);
+			test_map.showMap();
 		    test_report.printReport();
 			
 		    for(Map.Entry<String, Integer> entry : output.entrySet()) {
