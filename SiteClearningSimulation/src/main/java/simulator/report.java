@@ -65,11 +65,22 @@ public class report extends command {
 	public void operationCost(String operation) {
 		
 		int cost= result_cost.get(operation) + (super.ItemCost).get(operation);
+		int quantity = result_quantity.get(operation) + 1;
 	
 		result_cost.put(operation, cost);
-		result_quantity.put(operation, 1);
+		result_quantity.put(operation, quantity);
 	}
 	
+	public void operationCost(int numUnclearedLand) {
+			
+		String operation = super.ItemName[2];
+		
+		int cost= result_cost.get(operation) + ((super.ItemCost).get(operation))*numUnclearedLand;
+		int quantity = result_quantity.get(operation) + numUnclearedLand;
+	
+		result_cost.put(operation, cost);
+		result_quantity.put(operation, quantity);
+}
 	/*
 	 * update the result for activity fuel
 	 */
@@ -79,9 +90,10 @@ public class report extends command {
 		
 		//calculate the new fuel consumption
 		int fuel = result_cost.get(fuel_item) + (super.ActivityFuel).get(activity);
+		int quantity = result_quantity.get(fuel_item) + fuel;
 		//update the result tables
 		result_cost.put(fuel_item, fuel);
-		result_quantity.put(fuel_item, 1);
+		result_quantity.put(fuel_item, quantity);
 	}
 
 
