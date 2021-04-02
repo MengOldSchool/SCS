@@ -1,10 +1,12 @@
 package simulator;
 
+import org.junit.Test;
+
 /***********************
  * @author meng
  * bulldozer class
- * pos_x , column index, -1 -> out of map
- * pos_y, row index, -1 -> out of map
+ * pos_x , row index -1 -> out of map
+ * pos_y, column, -1 -> out of map
  * direction (degree):
  *  0 -> east facing
  *  90 -> north facing
@@ -14,14 +16,14 @@ package simulator;
 
 public class bulldozer{
 	
-	private int pos_x; //0, column - 0
-	private int pos_y; //0, row - 0
+	private int pos_x; //0, row - 0
+	private int pos_y; //0, column - 0
 	private int direction;
 	
 	//constructor 
 	public bulldozer() {
-		this.pos_x = -1;
-		this.pos_y = 0;
+		this.pos_x = 0;
+		this.pos_y = -1;
 		this.direction = 0;		
 	}
 	
@@ -63,14 +65,14 @@ public class bulldozer{
 			wrongcommand();
 		}
 		else {
-			//current direction = 0, move left, hence increase x
-			if (direction == 0) {pos_x = pos_x + step;}
-			//current direciton = 90, move up, hence decrease y
-			else if(direction == 90) {pos_y = pos_y - step;}
-			//current direction = 180, move right, hence decrease x
-			else if(direction == 180) {pos_x = pos_x - step;}
-			//current dreiciton = 270, move down, hence increae y
-			else if (direction == 270) {pos_y = pos_y + step;}
+			//current direction = 0, move left, hence increase y(column)
+			if (direction == 0) {pos_y = pos_y + step;}
+			//current direciton = 90, move up, hence decrease x(row)
+			else if(direction == 90) {pos_x = pos_x - step;}
+			//current direction = 180, move right, hence decrease y(column)
+			else if(direction == 180) {pos_y = pos_y - step;}
+			//current dreiciton = 270, move down, hence increae x(row)
+			else if (direction == 270) {pos_x = pos_x + step;}
 			else {
 				wrongcommand();
 			}
@@ -82,8 +84,8 @@ public class bulldozer{
 	 * quit the simulation, return the bulldozer to the starting point
 	 */
 	public void quit() {
-		this.pos_x = -1;
-		this.pos_y = 0;
+		this.pos_x = 0;
+		this.pos_y = -1;
 		this.direction = 0;
 	}
 	
@@ -107,5 +109,10 @@ public class bulldozer{
 		return direction;
 	}
 	
+	@Test
+	public void whereIsVeh() {
+		System.out.println("dir= " + this.direction + " degree,"+ " pos_x =" +  this.pos_x + ", pos_y = " + this.pos_y);
+			
+	}
 
 }
