@@ -6,6 +6,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import org.junit.Test;
+
 /************
  * 
  * @author meng
@@ -25,12 +27,13 @@ public class sitemap {
 
 
 
+	
 	/*
 	 * constructor for static test
 	 */
 	public sitemap() {
-		site_size_column = 1;
-		site_size_row = 1;
+		site_size_column = 2;
+		site_size_row = 2;
 		//myMap = new char[site_size_row][site_size_column];
 		myMap = new char[][] {{'o', 'o'}, {'t', 't'}};
 		
@@ -69,6 +72,8 @@ public class sitemap {
 		}	
 				
 	}
+	
+
 	
 	/*
 	 * method to update the map based on the command
@@ -143,6 +148,8 @@ public class sitemap {
 	public int getSite_size_column() {
 		return site_size_column;
 	}
+
+	
 
 	
 	
