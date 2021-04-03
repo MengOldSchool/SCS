@@ -13,7 +13,7 @@ import simulator.sitemap;
  * test case: stiemap -> getNumUnclearrLand()
  */
 
-public class sitemap_05 {
+public class Test_sitemap_05 {
 
 	@Test
 	public void test() {

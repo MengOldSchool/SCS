@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import userInterface.user;
 
-public class test_user_01 {
+public class Test_user_01 {
 
 	@Test
 	public void test() {

@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import simulator.bulldozer;
 
-public class bulldozer_advance_01 {
+public class Test_bulldozer_advance_01 {
 
 	@Test
 	public void test() {

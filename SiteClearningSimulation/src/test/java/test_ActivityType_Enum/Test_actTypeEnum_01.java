@@ -7,7 +7,7 @@ import org.junit.Test;
 import systemEnum.ActTypeEnum;
 import systemEnum.OpTypeEnum;
 
-public class test_actTypeEnum_01 {
+public class Test_actTypeEnum_01 {
 
 	@Test
 	public void test() {

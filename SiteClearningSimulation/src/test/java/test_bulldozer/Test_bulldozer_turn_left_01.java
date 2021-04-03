@@ -6,20 +6,18 @@ import org.junit.Test;
 
 import simulator.bulldozer;
 
-public class bulldozer_advance_04 {
+public class Test_bulldozer_turn_left_01 {
 
 	@Test
 	public void test() {
-		bulldozer testObj = new bulldozer(1, 3, 270);
-		testObj.advance(4);
-		
+		bulldozer testObj = new bulldozer();
+		testObj.turnleft();
+		testObj.turnleft();
+		testObj.turnleft();
 		int dir = testObj.getDirection();
-		int x = testObj.getPos_x();
-		int y = testObj.getPos_y();
 		
 		assertEquals(270, dir);
-		assertEquals(7, x);
-		assertEquals(1, y);
+		//fail("Not yet implemented");
 	}
 
 }

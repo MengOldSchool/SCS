@@ -2,6 +2,10 @@ package test_command_advance;
 
 import static org.junit.Assert.*;
 
+/*
+ * test command advance
+ */
+
 import org.junit.Test;
 
 import resultsManager.report;
@@ -12,13 +16,14 @@ import simulator.sitemap;
 import systemEnum.CmdType;
 
 /*
- * test - hit reserved tree T
+ * test case - out of boundary 
  */
 
-public class test_command_adv_04 {
+public class Test_command_adv_01 {
 
 	@Test
 	public void test() {
+		
 		//declare test objects
 		bulldozer test_veh = new bulldozer();
 		sitemap test_map = new sitemap();
@@ -39,10 +44,8 @@ public class test_command_adv_04 {
 	
 		
 		//operate the vehicle 
-		adv_flag = test_cmd_adv.move_forward(test_veh, test_map, test_report, 3);
 		test_cmd_turn.turnVeh(test_veh, CmdType.r, test_report);
-		adv_flag = test_cmd_adv.move_forward(test_veh, test_map, test_report, 2);
-		
+		adv_flag = test_cmd_adv.move_forward(test_veh, test_map, test_report, 1);
 		System.out.println("move forward status = " + adv_flag +"\n");
 		
 		test_veh.whereIsVeh();

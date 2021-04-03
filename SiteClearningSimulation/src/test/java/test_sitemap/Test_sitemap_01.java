@@ -9,16 +9,23 @@ import org.junit.Test;
 
 import simulator.sitemap;
 
-public class sitemap_02 {
+public class Test_sitemap_01 {
 
 	@Test
 	public void test() {
-		String localDir = System.getProperty("user.dir");	
+		sitemap testObj = new sitemap();
+		testObj.showMap();
+		//System.out.println(map);
+		
+		
+		String localDir = System.getProperty("user.dir");		
+			
 		
 		File f = new File(localDir + "//src//data//siteMap.txt");
 		
 		try {
 			sitemap testObj2 = new sitemap(f);
+			
 			testObj2.showMap();
 			//System.out.println(newMap[2][1]);
 		} catch (IOException e) {
@@ -28,6 +35,7 @@ public class sitemap_02 {
 		
 		//System.out.println(newMap);
 		assertEquals(0, 0);
+		//fail("Not yet implemented");
 	}
 
 }

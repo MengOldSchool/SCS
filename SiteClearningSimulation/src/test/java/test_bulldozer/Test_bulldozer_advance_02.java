@@ -6,22 +6,20 @@ import org.junit.Test;
 
 import simulator.bulldozer;
 
-public class bulldozer_quit_01 {
+public class Test_bulldozer_advance_02 {
 
 	@Test
 	public void test() {
-		bulldozer testObj = new bulldozer(0, 0, 0);
-		testObj.advance(3);
-		testObj.quit();
+		bulldozer testObj = new bulldozer(0, 0, 90);
+		testObj.advance(2);
 		
 		int dir = testObj.getDirection();
 		int x = testObj.getPos_x();
 		int y = testObj.getPos_y();
 		
-			
-		assertEquals(0, dir);
-		assertEquals(0, x);
-		assertEquals(-1, y);
+		assertEquals(90, dir);
+		assertEquals(-2, x);
+		assertEquals(0, y);
 	}
 
 }

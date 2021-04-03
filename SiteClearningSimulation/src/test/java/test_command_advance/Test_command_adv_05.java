@@ -2,8 +2,6 @@ package test_command_advance;
 
 import static org.junit.Assert.*;
 
-
-
 import org.junit.Test;
 
 import resultsManager.report;
@@ -13,11 +11,7 @@ import simulator.command_turn;
 import simulator.sitemap;
 import systemEnum.CmdType;
 
-/*
- * test - clear the rocky land
- */
-
-public class test_command_adv_03 {
+public class Test_command_adv_05 {
 
 	@Test
 	public void test() {
@@ -41,9 +35,11 @@ public class test_command_adv_03 {
 	
 		
 		//operate the vehicle 
-		adv_flag = test_cmd_adv.move_forward(test_veh, test_map, test_report, 3);
+		adv_flag = test_cmd_adv.move_forward(test_veh, test_map, test_report, 4);
 		test_cmd_turn.turnVeh(test_veh, CmdType.r, test_report);
 		adv_flag = test_cmd_adv.move_forward(test_veh, test_map, test_report, 1);
+		test_cmd_turn.turnVeh(test_veh, CmdType.r, test_report);
+		adv_flag = test_cmd_adv.move_forward(test_veh, test_map, test_report, 2);
 		
 		System.out.println("move forward status = " + adv_flag +"\n");
 		
@@ -52,10 +48,8 @@ public class test_command_adv_03 {
 		
 		test_report.printReport();
 		test_map.showMap();
-		
-		
+	
 		assertEquals(adv_flag, true);
-
 	}
 
 }

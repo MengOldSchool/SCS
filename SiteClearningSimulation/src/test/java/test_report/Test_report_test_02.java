@@ -13,7 +13,7 @@ import resultsManager.report;
  * test Activity table declared in class - command
  */
 
-public class report_test_02 {
+public class Test_report_test_02 {
 
 	@Test
 	public void test() {

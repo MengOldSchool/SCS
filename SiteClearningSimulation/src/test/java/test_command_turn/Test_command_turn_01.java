@@ -17,7 +17,7 @@ import systemEnum.OpTypeEnum;
  * test command_turn.java
  */
 
-public class test_command_turn_01 {
+public class Test_command_turn_01 {
 
 	@Test
 	public void test() {

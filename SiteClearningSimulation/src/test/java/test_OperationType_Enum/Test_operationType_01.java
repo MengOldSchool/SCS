@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import systemEnum.OpTypeEnum;
 
-public class test_operationType_01 {
+public class Test_operationType_01 {
 
 	@Test
 	

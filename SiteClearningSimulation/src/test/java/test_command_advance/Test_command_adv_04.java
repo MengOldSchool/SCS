@@ -12,9 +12,10 @@ import simulator.sitemap;
 import systemEnum.CmdType;
 
 /*
- * test: pass through a tree, paint damage 
+ * test - hit reserved tree T
  */
-public class test_command_adv_06 {
+
+public class Test_command_adv_04 {
 
 	@Test
 	public void test() {
@@ -38,11 +39,9 @@ public class test_command_adv_06 {
 	
 		
 		//operate the vehicle 
-		adv_flag = test_cmd_adv.move_forward(test_veh, test_map, test_report, 4);
-		test_cmd_turn.turnVeh(test_veh, CmdType.r, test_report);
-		adv_flag = test_cmd_adv.move_forward(test_veh, test_map, test_report, 1);
-		test_cmd_turn.turnVeh(test_veh, CmdType.r, test_report);
 		adv_flag = test_cmd_adv.move_forward(test_veh, test_map, test_report, 3);
+		test_cmd_turn.turnVeh(test_veh, CmdType.r, test_report);
+		adv_flag = test_cmd_adv.move_forward(test_veh, test_map, test_report, 2);
 		
 		System.out.println("move forward status = " + adv_flag +"\n");
 		
@@ -51,8 +50,9 @@ public class test_command_adv_06 {
 		
 		test_report.printReport();
 		test_map.showMap();
-	
-		assertEquals(adv_flag, true);
+		
+		
+		assertEquals(adv_flag, false);
 	}
 
 }

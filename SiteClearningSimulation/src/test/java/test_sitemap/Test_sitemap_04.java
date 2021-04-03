@@ -12,7 +12,7 @@ import simulator.sitemap;
 /*
  * test case: sitemap -> updateMap()
  */
-public class sitemap_04 {
+public class Test_sitemap_04 {
 
 	@Test
 	public void test() {

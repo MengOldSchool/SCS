@@ -12,7 +12,7 @@ import simulator.command_quit;
 import simulator.sitemap;
 import systemEnum.OpTypeEnum;
 
-public class test_command_quit_01 {
+public class Test_command_quit_01 {
 
 	@Test
 	public void test() {

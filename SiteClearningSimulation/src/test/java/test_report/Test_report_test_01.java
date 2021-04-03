@@ -15,7 +15,7 @@ import resultsManager.reportTables;
  */
 
 
-public class report_test_01 {
+public class Test_report_test_01 {
 
 	@Test
 	

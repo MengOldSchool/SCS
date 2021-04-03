@@ -1,11 +1,6 @@
 package test_command_advance;
 
 import static org.junit.Assert.*;
-
-/*
- * test command advance
- */
-
 import org.junit.Test;
 
 import resultsManager.report;
@@ -13,17 +8,15 @@ import simulator.bulldozer;
 import simulator.command_advance;
 import simulator.command_turn;
 import simulator.sitemap;
-import systemEnum.CmdType;
 
 /*
- * test case - out of boundary 
+ * test - clear the tree
  */
 
-public class test_command_adv_01 {
+public class Test_command_adv_02 {
 
 	@Test
 	public void test() {
-		
 		//declare test objects
 		bulldozer test_veh = new bulldozer();
 		sitemap test_map = new sitemap();
@@ -44,8 +37,8 @@ public class test_command_adv_01 {
 	
 		
 		//operate the vehicle 
-		test_cmd_turn.turnVeh(test_veh, CmdType.r, test_report);
-		adv_flag = test_cmd_adv.move_forward(test_veh, test_map, test_report, 1);
+		//test_cmd_turn.turnVeh(test_veh, CmdType.r, test_report);
+		adv_flag = test_cmd_adv.move_forward(test_veh, test_map, test_report, 4);
 		System.out.println("move forward status = " + adv_flag +"\n");
 		
 		test_veh.whereIsVeh();
@@ -55,7 +48,8 @@ public class test_command_adv_01 {
 		test_map.showMap();
 		
 		
-		assertEquals(adv_flag, false);
+		assertEquals(adv_flag, true);
+
 	}
 
 }
