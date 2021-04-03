@@ -4,12 +4,12 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import simulator.CmdType;
+import resultsManager.report;
 import simulator.bulldozer;
 import simulator.command_advance;
 import simulator.command_turn;
-import simulator.report;
 import simulator.sitemap;
+import systemEnum.CmdType;
 
 /*
  * test: pass through a tree, paint damage 

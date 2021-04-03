@@ -4,8 +4,8 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import simulator.ActTypeEnum;
-import simulator.OpTypeEnum;
+import systemEnum.ActTypeEnum;
+import systemEnum.OpTypeEnum;
 
 public class test_actTypeEnum_01 {
 

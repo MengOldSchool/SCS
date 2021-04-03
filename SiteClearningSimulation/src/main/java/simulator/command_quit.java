@@ -1,10 +1,13 @@
 package simulator;
 
+import resultsManager.report;
+import systemEnum.OpTypeEnum;
+
 /*
  * command quit: update the number of uncleared land & communication overhead
  */
 
-public class command_quit extends command {
+public class command_quit{
 	public void quit(sitemap map, report result) {
 		//update the cost for uncleared land
 		int numUncleardLand = map.getNumUnclearedLand();

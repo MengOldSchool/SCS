@@ -1,6 +1,8 @@
 package simulator;
 
-import java.util.Arrays;
+import resultsManager.report;
+import systemEnum.ActTypeEnum;
+import systemEnum.OpTypeEnum;
 
 /*
  * @Meng
@@ -8,7 +10,7 @@ import java.util.Arrays;
  * return false: command exit due to 1)hit reserved tree, 2)out of boundary 
  */
 
-public class command_advance extends command{
+public class command_advance{
 	
 		
 	public command_advance() {

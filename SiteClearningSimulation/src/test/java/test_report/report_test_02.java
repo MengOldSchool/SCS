@@ -7,7 +7,7 @@ import java.util.Map;
 
 import org.junit.Test;
 
-import simulator.report;
+import resultsManager.report;
 
 /*
  * test Activity table declared in class - command

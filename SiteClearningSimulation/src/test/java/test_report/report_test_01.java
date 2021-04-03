@@ -7,8 +7,8 @@ import java.util.Map;
 
 import org.junit.Test;
 
-import simulator.command;
-import simulator.report;
+import resultsManager.report;
+import resultsManager.reportTables;
 
 /*
  * test ItemCost Table, defined in class command

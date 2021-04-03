@@ -1,6 +1,5 @@
 package simulator;
 
-import org.junit.Test;
 
 /***********************
  * @author meng
@@ -109,7 +108,6 @@ public class bulldozer{
 		return direction;
 	}
 	
-	@Test
 	public void whereIsVeh() {
 		System.out.println("dir= " + this.direction + " degree,"+ " pos_x =" +  this.pos_x + ", pos_y = " + this.pos_y);
 			

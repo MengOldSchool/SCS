@@ -7,11 +7,11 @@ import java.util.Map;
 
 import org.junit.Test;
 
-import simulator.CmdType;
-import simulator.OpTypeEnum;
+import resultsManager.report;
 import simulator.bulldozer;
 import simulator.command_turn;
-import simulator.report;
+import systemEnum.CmdType;
+import systemEnum.OpTypeEnum;
 
 /*
  * test command_turn.java

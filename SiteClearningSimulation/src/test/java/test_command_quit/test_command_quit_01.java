@@ -7,10 +7,10 @@ import java.util.Map;
 
 import org.junit.Test;
 
-import simulator.OpTypeEnum;
+import resultsManager.report;
 import simulator.command_quit;
-import simulator.report;
 import simulator.sitemap;
+import systemEnum.OpTypeEnum;
 
 public class test_command_quit_01 {
 

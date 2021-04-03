@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import simulator.OpTypeEnum;
+import systemEnum.OpTypeEnum;
 
 public class test_operationType_01 {
 
