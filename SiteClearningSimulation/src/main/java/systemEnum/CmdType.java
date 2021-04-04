@@ -1,8 +1,14 @@
 package systemEnum;
 
 public enum CmdType {
-	a, //advance
-	l, //left
-	r, //right
-	q //quit	
+	Adv('a'), //advance
+	Left('l'), //left
+	Right('r'), //right
+	Quit('q'); //quit	
+	
+	public final char value;
+	
+	private CmdType(char c) {
+		this.value = c;
+	}
 }

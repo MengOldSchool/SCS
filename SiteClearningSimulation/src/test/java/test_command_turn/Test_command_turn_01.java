@@ -7,9 +7,10 @@ import java.util.Map;
 
 import org.junit.Test;
 
+import commandHandler.command_left;
+import commandHandler.command_right;
 import resultsManager.report;
 import simulator.bulldozer;
-import simulator.command_turn;
 import systemEnum.CmdType;
 import systemEnum.OpTypeEnum;
 
@@ -22,25 +23,20 @@ public class Test_command_turn_01 {
 	@Test
 	public void test() {
 		//creat test objects
-		command_turn test_obj = new command_turn();
 		bulldozer test_veh = new bulldozer();
 		report test_report = new report();
+		command_left test_turn_left = new command_left(test_veh, test_report);
+		command_right test_turn_right = new command_right(test_veh, test_report);
 		
 		/*
 		 * run test
 		 */
-		CmdType test_cmd = CmdType.l;
 		
-		test_obj.turnVeh(test_veh, test_cmd, test_report);
+		//turn left
+		test_turn_left.action();
 		
-		test_cmd = CmdType.r;
-		test_obj.turnVeh(test_veh, test_cmd, test_report);
-		
-		test_cmd = CmdType.a;
-		test_obj.turnVeh(test_veh, test_cmd, test_report);
-		
-		test_cmd = CmdType.q;
-		test_obj.turnVeh(test_veh, test_cmd, test_report);
+		//turn right
+		test_turn_right.action();
 		
 		HashMap<String, Integer> output = test_report.getResult_cost();
 		
@@ -68,9 +64,8 @@ public class Test_command_turn_01 {
 	    expecteds.put(expect_item[3], expect_cost[3]);
 	    expecteds.put(expect_item[4], expect_cost[4]);
 		
-		//evaluation 
-
-		test_report.printReport();
+		//evaluation
+	    assertEquals(test_veh.getDirection(), 0);
 		for(Map.Entry<String, Integer> entry : output.entrySet()) {
 	    	assertSame(expecteds.get(entry.getKey()), output.get(entry.getKey()));
         }

@@ -7,8 +7,8 @@ import java.util.Map;
 
 import org.junit.Test;
 
+import commandHandler.command_quit;
 import resultsManager.report;
-import simulator.command_quit;
 import simulator.sitemap;
 import systemEnum.OpTypeEnum;
 
@@ -18,14 +18,15 @@ public class Test_command_quit_01 {
 	public void test() {
 		
 			//create test objects
-			command_quit test_obj = new command_quit();
 			report test_report = new report();
 			sitemap test_map = new sitemap();
+			command_quit test_obj = new command_quit(test_map, test_report);
+			
 			
 			/*
 			 * run test
 			 */
-			test_obj.quit(test_map, test_report);
+			test_obj.action();
 			
 			HashMap<String, Integer> output = test_report.getResult_cost();
 			
@@ -54,12 +55,11 @@ public class Test_command_quit_01 {
 		    expecteds.put(expect_item[4], expect_cost[4]);
 			
 			//evaluation 
-			test_map.showMap();
-		    test_report.printReport();
 			
 		    for(Map.Entry<String, Integer> entry : output.entrySet()) {
 		    	assertSame(expecteds.get(entry.getKey()), output.get(entry.getKey()));
 	        }
+		    
 	}
 		
 

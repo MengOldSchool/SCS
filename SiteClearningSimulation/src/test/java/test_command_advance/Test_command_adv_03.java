@@ -6,10 +6,11 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import commandHandler.command_advance;
+import commandHandler.command_left;
+import commandHandler.command_right;
 import resultsManager.report;
 import simulator.bulldozer;
-import simulator.command_advance;
-import simulator.command_turn;
 import simulator.sitemap;
 import systemEnum.CmdType;
 
@@ -24,9 +25,11 @@ public class Test_command_adv_03 {
 		//declare test objects
 		bulldozer test_veh = new bulldozer();
 		sitemap test_map = new sitemap();
-		command_turn test_cmd_turn = new command_turn();
-		command_advance test_cmd_adv = new command_advance();
 		report test_report = new report();
+		
+		//command_left test_left = new command_left(test_veh, test_report);
+		command_right test_right = new command_right(test_veh, test_report);
+		command_advance test_adv = new command_advance(test_veh, test_map, test_report);
 		boolean adv_flag = true; 
 		
 		//set a test site
@@ -36,23 +39,17 @@ public class Test_command_adv_03 {
 				{'r', 'o', 'T', 'o'}};
 		
 		test_map.setTestMap(myMap, 3, 4);
-		test_map.showMap();
-		System.out.println();
-	
+
+		//operate the vehicle
+		test_adv.decodeCmd("a3");
+		test_adv.action();
+		adv_flag = test_adv.getStatus();
 		
-		//operate the vehicle 
-		adv_flag = test_cmd_adv.move_forward(test_veh, test_map, test_report, 3);
-		test_cmd_turn.turnVeh(test_veh, CmdType.r, test_report);
-		adv_flag = test_cmd_adv.move_forward(test_veh, test_map, test_report, 1);
+		test_right.action();
 		
-		System.out.println("move forward status = " + adv_flag +"\n");
-		
-		test_veh.whereIsVeh();
-		System.out.println();
-		
-		test_report.printReport();
-		test_map.showMap();
-		
+		test_adv.decodeCmd("a1");
+		test_adv.action();
+		adv_flag = test_adv.getStatus();
 		
 		assertEquals(adv_flag, true);
 
