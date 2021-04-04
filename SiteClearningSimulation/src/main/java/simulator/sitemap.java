@@ -6,7 +6,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import org.junit.Test;
 
 /************
  * 
@@ -149,10 +148,7 @@ public class sitemap {
 		return site_size_column;
 	}
 	
-	@Test
-	/*
-	 * test method, setup a test map
-	 */
+	
 	public void setTestMap(char[][] testMap, int row_size, int col_size) {
 		myMap = testMap;
 		site_size_row = row_size;

@@ -1,5 +1,6 @@
 Manifest-Version: 1.0
 Built-By: meng
 Build-Jdk: 11.0.10
+Main-Class: main.SCS_Main
 Created-By: Maven Integration for Eclipse
 

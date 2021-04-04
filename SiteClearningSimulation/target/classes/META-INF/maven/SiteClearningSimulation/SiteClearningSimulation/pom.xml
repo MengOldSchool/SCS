@@ -7,16 +7,57 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>SiteClearningSimulation</name>
 
+	<properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+  		<maven.compiler.target>1.8</maven.compiler.target>
+ 	</properties>
+	
 	<dependencies>
+	
+		
+
 		<!-- https://mvnrepository.com/artifact/junit/junit -->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.12</version>
+			<version>4.13</version>
 			<scope>test</scope>
 		</dependency>
-
+		
+		  
 
 	</dependencies>
+	
+	<build>
+        <plugins>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.0.0-M5</version>
+            </plugin>
+            
+            <plugin> 
+
+                <!-- Building an executable jar -->
+
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.1.0</version>
+                <configuration>
+                  <archive>
+                    <manifest>
+
+                    <!-- give full qualified name of your main class-->
+                      <mainClass>main.SCS_Main</mainClass>
+
+                    </manifest>
+                  </archive>
+                </configuration>
+    		</plugin>
+            
+
+        </plugins>
+    </build>
 
 </project>

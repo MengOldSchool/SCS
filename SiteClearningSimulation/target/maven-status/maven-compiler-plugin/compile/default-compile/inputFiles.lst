@@ -1,0 +1,15 @@
+/home/meng/git/SCS/SiteClearningSimulation/src/main/java/systemEnum/ActTypeEnum.java
+/home/meng/git/SCS/SiteClearningSimulation/src/main/java/systemEnum/OpTypeEnum.java
+/home/meng/git/SCS/SiteClearningSimulation/src/main/java/commandHandler/command_right.java
+/home/meng/git/SCS/SiteClearningSimulation/src/main/java/commandHandler/command_left.java
+/home/meng/git/SCS/SiteClearningSimulation/src/main/java/commandHandler/command_quit.java
+/home/meng/git/SCS/SiteClearningSimulation/src/main/java/commandHandler/command_advance.java
+/home/meng/git/SCS/SiteClearningSimulation/src/main/java/resultsManager/reportTables.java
+/home/meng/git/SCS/SiteClearningSimulation/src/main/java/simulator/bulldozer.java
+/home/meng/git/SCS/SiteClearningSimulation/src/main/java/commandHandler/commandInterface.java
+/home/meng/git/SCS/SiteClearningSimulation/src/main/java/userInterface/user.java
+/home/meng/git/SCS/SiteClearningSimulation/src/main/java/systemEnum/LandType.java
+/home/meng/git/SCS/SiteClearningSimulation/src/main/java/main/SCS_Main.java
+/home/meng/git/SCS/SiteClearningSimulation/src/main/java/simulator/sitemap.java
+/home/meng/git/SCS/SiteClearningSimulation/src/main/java/resultsManager/report.java
+/home/meng/git/SCS/SiteClearningSimulation/src/main/java/systemEnum/CmdType.java
