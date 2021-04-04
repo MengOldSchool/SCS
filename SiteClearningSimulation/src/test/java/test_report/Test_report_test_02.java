@@ -47,7 +47,7 @@ public class Test_report_test_02 {
 	    /**************************************/
 		
 		
-		System.out.println(output);
+		//System.out.println(output);
 		
 	    for(Map.Entry<String, Integer> entry : output.entrySet()) {
 	    	assertSame(expecteds.get(entry.getKey()), output.get(entry.getKey()));

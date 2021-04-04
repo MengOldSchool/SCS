@@ -12,7 +12,7 @@ public class Test_user_01 {
 	public void test() {
 		user testObj = new user();
 		boolean inputStatus;
-		String curCmd;
+		String curCmd = null;
 		
 		inputStatus = testObj.readInput();
 		if (inputStatus) {
@@ -20,6 +20,7 @@ public class Test_user_01 {
 			System.out.println("You entered an valid command " + curCmd);
 			testObj.showAllCmd();
 		}
+		System.out.println(curCmd.equals("q") + " comparing");
 		System.out.println("-------------");
 			
 		inputStatus = testObj.readInput();
@@ -28,6 +29,7 @@ public class Test_user_01 {
 			System.out.println("You entered an valid command " + curCmd);
 			testObj.showAllCmd();
 		}
+		System.out.println(curCmd.equals("q") + " comparing");
 		System.out.println("-------------");
 		
 		inputStatus = testObj.readInput();
@@ -36,7 +38,9 @@ public class Test_user_01 {
 			System.out.println("You entered an valid command " + curCmd);
 			testObj.showAllCmd();
 		}
+		System.out.println(curCmd.equals("q") + " comparing");
 		System.out.println("-------------");
+		
 		
 	
 		testObj.endInput();

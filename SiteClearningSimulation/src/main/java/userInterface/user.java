@@ -40,7 +40,7 @@ public class user {
 		System.out.print("(l)eft, (r)right, (a)dvance <n>, (q)uit: ");	  
 		this.input = in.nextLine();
 		isInputValid = checkInput();
-        
+	
         return isInputValid;               
 	}
 	
