@@ -81,7 +81,7 @@ public class command_advance extends commandInterface{
 			if (!insideSite(new_pos_x, new_pos_y, site_size_row, site_size_col)) {
 				//update the flag, set to false
 				CompleteSucces = false;
-				System.out.println("debug0");	
+				//System.out.println("debug0");	
 				//update the cost for uncleared land
 				int numUncleardLand = map.getNumUnclearedLand();
 				result.operationCost(numUncleardLand);
@@ -110,17 +110,17 @@ public class command_advance extends commandInterface{
 				//not the last step, if hit a tree, an extra operation cost incurred
 				if (land_type == 't') {
 					//hit a tree and repairing paint damage required
-					System.out.println("debug01");
+					//System.out.println("debug01");
 					result.operationCost(OpTypeEnum.OpRepDmg.value);
 				}
 				else if(land_type == 'o') {
 					//visiting a cleared land
-					System.out.println("debug02");
+					//System.out.println("debug02");
 					result.activityFuel(ActTypeEnum.ActVisCldLd.value);
 				}
 				else if(land_type == 'r') {
 					//visiting rocky land, so clear it, update the map
-					System.out.println("debug03");
+					//System.out.println("debug03");
 					result.activityFuel(ActTypeEnum.ActClrRL.value);
 					map.updateMap(new_pos_x, new_pos_y);
 				}
@@ -130,18 +130,18 @@ public class command_advance extends commandInterface{
 				
 				if(land_type == 'o') {
 					//clearing plain land
-					System.out.println("debug04");
+					//System.out.println("debug04");
 					result.activityFuel(ActTypeEnum.ActClrPL.value);				
 				}
 				else if(land_type == 'r') {
 					//clearing rocky land, update the map
-					System.out.println("debug05");
+					//System.out.println("debug05");
 					result.activityFuel(ActTypeEnum.ActClrRL.value);
 					map.updateMap(new_pos_x, new_pos_y);
 				}
 				else if(land_type == 't') {
 					//clearing tree, update the map
-					System.out.println("debug06");
+					//System.out.println("debug06");
 					result.activityFuel(ActTypeEnum.ActClrTree.value);
 					map.updateMap(new_pos_x, new_pos_y);
 				}

@@ -44,9 +44,6 @@ public class Test_command_adv_01 {
 				{'r', 'o', 'T', 'o'}};
 		
 		test_map.setTestMap(myMap, 3, 4);
-		test_map.showMap();
-		System.out.println();
-	
 		
 		//operate the vehicle 
 		test_right.action();
@@ -54,8 +51,7 @@ public class Test_command_adv_01 {
 		test_adv.decodeCmd("a1");
 		test_adv.action();
 		adv_flag = test_adv.getStatus();
-			
-		
+
 		assertEquals(adv_flag, false);
 	}
 

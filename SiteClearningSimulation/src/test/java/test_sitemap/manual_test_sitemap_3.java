@@ -9,36 +9,23 @@ import org.junit.Test;
 
 import simulator.sitemap;
 
-/*
- * test: updateMap methond
- */
-
-public class Test_sitemap_03 {
+public class manual_test_sitemap_3 {
 
 	@Test
 	public void test() {
-		
-		char[][] expected = {
-				{'o', 'o', 'o', 't','o', 'o', 'o','o',}, 
-				{'o', 'o', 'o', 'o','o', 'T', 'o','o',},
-				{'r', 'r', 'r', 'o','o', 'o', 'T','o',},
-				{'r', 'r', 'r', 'r','r', 'o', 'o','o',},
-				{'r', 'r', 'r', 'r','r', 'r', 'o','o',} 
-				};
-		
-		
 		String localDir = System.getProperty("user.dir");	
 		
 		File f = new File(localDir + "//src//data//siteMap.txt");
 		
 		try {
 			sitemap testObj = new sitemap(f);
+			testObj.showMap();
 			
 			boolean result = testObj.updateMap(0, 3);
-			char landtype = testObj.getLandType(0, 3);
-		
+			System.out.println();
+			testObj.showMap();
 			
-			assertEquals(landtype, 'o');
+			assertEquals(result, true);
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

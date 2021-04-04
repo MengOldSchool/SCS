@@ -5,7 +5,6 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import systemEnum.ActTypeEnum;
-import systemEnum.OpTypeEnum;
 
 public class Test_actTypeEnum_01 {
 
@@ -23,7 +22,7 @@ public class Test_actTypeEnum_01 {
 		assertSame (ActTypeEnum.ActClrRL.value, expect[2]);
 		assertSame (ActTypeEnum.ActClrTree.value, expect[3]);
 		
-		System.out.println(ActTypeEnum.ActClrPL.value);
+		//System.out.println(ActTypeEnum.ActClrPL.value);
 	}
 
 }

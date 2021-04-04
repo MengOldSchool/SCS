@@ -2,8 +2,6 @@ package resultsManager;
 
 import java.util.HashMap;
 
-import org.junit.Test;
-
 /*
  * @Meng,
  * declare Activity vs Fuel Table

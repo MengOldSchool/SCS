@@ -26,7 +26,7 @@ public class bulldozer{
 		this.direction = 0;		
 	}
 	
-	//?????????, further error handing is required ?????
+	//constructor to test only
 	public bulldozer(int x, int y, int dir) {
 		this.pos_x = x;
 		this.pos_y = y;
@@ -61,7 +61,7 @@ public class bulldozer{
 	 */
 	public void advance(int step) {
 		if (step <0) {
-			wrongcommand();
+			//do-nothing
 		}
 		else {
 			//current direction = 0, move left, hence increase y(column)
@@ -73,7 +73,7 @@ public class bulldozer{
 			//current dreiciton = 270, move down, hence increae x(row)
 			else if (direction == 270) {pos_x = pos_x + step;}
 			else {
-				wrongcommand();
+				//do-nothing
 			}
 		}
 		
@@ -88,13 +88,6 @@ public class bulldozer{
 		this.direction = 0;
 	}
 	
-	/*
-	 * error handling
-	 */
-	private void wrongcommand() {
-		System.out.println("wrong command");
-	}
-
 	//standard getter methods
 	public int getPos_x() {
 		return pos_x;

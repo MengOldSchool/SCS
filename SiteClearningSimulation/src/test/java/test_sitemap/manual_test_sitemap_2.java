@@ -9,7 +9,7 @@ import org.junit.Test;
 
 import simulator.sitemap;
 
-public class Test_sitemap_02 {
+public class manual_test_sitemap_2 {
 
 	@Test
 	public void test() {
