@@ -1,6 +1,8 @@
-package simulator;
+package commandHandler;
 
 import resultsManager.report;
+import simulator.bulldozer;
+import simulator.sitemap;
 import systemEnum.ActTypeEnum;
 import systemEnum.OpTypeEnum;
 
@@ -10,21 +12,55 @@ import systemEnum.OpTypeEnum;
  * return false: command exit due to 1)hit reserved tree, 2)out of boundary 
  */
 
-public class command_advance{
+public class command_advance extends commandInterface{
 	
 		
-	public command_advance() {
+	private boolean CompleteSucces;
+	private int forwardStep;
+	
+	private bulldozer veh;
+	private report result;
+	private sitemap map;
+	
+	/*
+	 * constructor
+	 */
+	public command_advance(bulldozer vehIn, sitemap mapIn, report resultIn) {
+		CompleteSucces = true;
+		forwardStep = 0;
+		
+		this.veh = vehIn;
+		this.result = resultIn;
+		this.map = mapIn;
 	
 	}
 	
-	public boolean move_forward (bulldozer veh, sitemap map, report result, int step) {
+	/*
+	 * override decodeCmd
+	 * get the steps from input command
+	 */
+	public void decodeCmd(String inCmd) {
+
+		forwardStep = Integer.parseInt(inCmd.substring(1));
+	}
+	
+	/*
+	 * override getStatus
+	 */
+	public boolean getStatus() {
+		return this.CompleteSucces;
+	}
+	
+	/*
+	 * override action
+	 */
+	public void action () {
 		
 		int new_pos_x;
 		int new_pos_y;
 		int site_size_row;
 		int site_size_col;
 		char land_type;
-		boolean CompleteSucces = true;
 		
 		//get site size, (row - 1) -> maximum of pos_x
 		//get site size, (col - 1) -> maximum of pos_y
@@ -36,7 +72,7 @@ public class command_advance{
 		result.operationCost(OpTypeEnum.OpComm.value);
 		
 		//advance one step at a time
-		for (int i=0; i< step; i++) {
+		for (int i=0; i< this.forwardStep; i++) {
 			veh.advance(1);
 			new_pos_x = veh.getPos_x();
 			new_pos_y = veh.getPos_y();
@@ -70,7 +106,7 @@ public class command_advance{
 			}
 			
 			//check if this is the last step, if not, check if the tree is hit
-			if (i < (step-1)) {
+			if (i < (this.forwardStep-1)) {
 				//not the last step, if hit a tree, an extra operation cost incurred
 				if (land_type == 't') {
 					//hit a tree and repairing paint damage required
@@ -110,10 +146,11 @@ public class command_advance{
 					map.updateMap(new_pos_x, new_pos_y);
 				}
 			}
-			
-		}
-		return CompleteSucces;
+		
+		}		
 	}
+	
+	
 	
 	/*
 	 * private method to check if bulldozer is inside the site
