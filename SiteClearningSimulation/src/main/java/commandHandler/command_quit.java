@@ -32,7 +32,7 @@ public class command_quit extends commandInterface{
 		result.operationCost(numUncleardLand);
 		
 		//update the cost for comm overhead
-		result.operationCost(OpTypeEnum.OpComm.value);
+		//result.operationCost(OpTypeEnum.OpComm.value);
 	}
 
 	/*

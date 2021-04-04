@@ -25,7 +25,6 @@ public class user {
 	 * constructor
 	 */
 	
-	
 	public user() {
 		userCmd = new ArrayList<String>();
 	}
@@ -57,17 +56,17 @@ public class user {
 			//if input is one char, check it is "l", "r", "q"
 			if (ch[0] == (CmdType.Left.value)) {
 				//store the commmand
-				userCmd.add(input);
+				userCmd.add("turn left");
 				validCmd = input;
 				return true;
 			}
 			else if (ch[0] == CmdType.Right.value) {
-				userCmd.add(input);
+				userCmd.add("turn right");
 				validCmd = input;
 				return true;
 			}
 			else if (ch[0] == CmdType.Quit.value) {
-				userCmd.add(input);
+				userCmd.add("quit");
 				validCmd = input;
 				return true;
 			}
@@ -87,7 +86,8 @@ public class user {
 						return false;
 					}
 				}
-				userCmd.add(input);
+							
+				userCmd.add("advanved" + " " + input.substring(1));
 				validCmd = input;
 				return true;
 			}
@@ -100,6 +100,7 @@ public class user {
 
 	public void showAllCmd() {
 		System.out.println(userCmd);
+		
 	}
 	
 	public String curValidCmd() {

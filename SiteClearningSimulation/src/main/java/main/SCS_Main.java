@@ -1,5 +1,8 @@
 package main;
 
+import java.io.File;
+import java.io.IOException;
+
 import commandHandler.command_advance;
 import commandHandler.command_left;
 import commandHandler.command_quit;
@@ -15,10 +18,36 @@ public class SCS_Main {
 	public static void main(String[] args) {
 		//setup simulation environment  
 		bulldozer veh = new bulldozer();
-		sitemap site = new sitemap();
 		report result = new report();
 		user operator = new user();
+		sitemap site = null;	
 		
+		//setup site map, a default map will be used, if not defined by user
+		if (args.length == 0) {
+			System.out.println("Simulation will use a site map \n");
+			site = new sitemap();
+			
+		}
+		else
+		{
+			System.out.println("Load the site map from  the file " + args[0] + ".");
+			site = new sitemap();
+			
+			//File f = new File(args[0]);
+			String localDir = System.getProperty("user.dir");		
+			File f = new File(localDir + "//src//main//java//main//" + args[0]);
+			
+			
+			try {
+				site = new sitemap(f);
+		
+				} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
+			
 		//declare command objects
 		command_advance cmd_adv = new command_advance(veh, site, result);
 		command_left cmd_left = new command_left(veh, result);
@@ -86,6 +115,8 @@ public class SCS_Main {
 		
 		//say good bye
 		printOutEnding();
+		
+		site.showMap();
 
 	}
 	
@@ -129,7 +160,7 @@ public class SCS_Main {
 	 * print out all the commands
 	 */
 	private static void printOutCmdMsg() {
-		System.out.println("\nThis Simulation has ended at your request. There are the commands you issued \n");
+		System.out.println("\nThis Simulation has ended at your request. There are the commands you issued:\n");
 	}
 
 }
