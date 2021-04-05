@@ -52,7 +52,12 @@ public class user {
 		char[] ch = this.input.toCharArray();
 		int cmd_length = ch.length; 
 		
-		if (cmd_length == 1) {
+		
+		if(cmd_length == 0) {
+			//no input
+			return false;
+		}
+		else if(cmd_length == 1) {
 			//if input is one char, check it is "l", "r", "q"
 			if (ch[0] == (CmdType.Left.value)) {
 				//store the commmand

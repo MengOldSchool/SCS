@@ -65,6 +65,43 @@ public class sitemap {
 		}
 				
 	}
+	
+	/*
+	 * constructor - get the map, input -> the file name	
+	 */
+	public sitemap(String fileName) throws IOException{
+		//prepare for file reading
+		File f = new File(fileName);
+		FileReader fr = new FileReader(f);
+		BufferedReader br = new BufferedReader(fr);
+		ArrayList <String> linePointer = new ArrayList<>();
+		String line;
+		
+		
+		
+		while((line = br.readLine()) != null) {
+			//System.out.println(line);
+			linePointer.add(line);					
+		}
+		br.close();
+		fr.close();
+		
+			
+		//find the sizes (row, column) of the map
+		site_size_row = linePointer.size();
+		//????? need to check the consistency of all lines ????
+		char[] cur =(linePointer.get(1)).toCharArray();
+		site_size_column = cur.length;
+		
+		//create a new map with the right size and assign the land type
+		myMap = new char[site_size_row][site_size_column];
+		for (int i = 0; i<linePointer.size(); i++){
+			//System.out.println(curLine[i]);
+			myMap[i] = (linePointer.get(i)).toCharArray();
+		}
+				
+	}
+
 
 
 	/*
@@ -134,16 +171,23 @@ public class sitemap {
 		return myMap;
 	}
 
+	/*
+	 * getter: return the number of row
+	 */
 	public int getSite_size_row() {
 		return site_size_row;
 	}
 
-	
+	/*
+	 * getter: return the number of column
+	 */
 	public int getSite_size_column() {
 		return site_size_column;
 	}
 	
-	
+	/*
+	 * method to manual set a test map
+	 */
 	public void setTestMap(char[][] testMap, int row_size, int col_size) {
 		myMap = testMap;
 		site_size_row = row_size;

@@ -15,7 +15,7 @@ import userInterface.user;
 
 public class SCS_Main {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		//setup simulation environment  
 		bulldozer veh = new bulldozer();
 		report result = new report();
@@ -31,24 +31,7 @@ public class SCS_Main {
 		else
 		{
 			System.out.println("\nLoad the site map from  the file " + args[0] + ".");
-			//site = new sitemap();
-			
-			//File f = new File(args[0]);
-			String localDir = System.getProperty("user.dir");		
-			//File f = new File(localDir + "//src//main//java//main//" + args[0]);
-			File f = new File(args[0]);
-			
-			
-			try {
-				site = new sitemap(f);
-		
-				} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-				printOutNoFileError();
-				
-			}
-			
+			site = new sitemap(args[0]);			
 		}
 			
 		//declare command objects
@@ -75,16 +58,19 @@ public class SCS_Main {
 				//Valid user input, run the simulation accordingly
 				userInput = operator.curValidCmd();
 				
-				//Execute the user command
-				if (userInput.equals("q"))
+				//Execute the user command				
+				if (userInput.equals(Character.toString(CmdType.Quit.value)))
 				{
+					//execute quit action
 					cmd_quit.action();
 					IsFinished = true;
 				}
-				else if (userInput.equals("l")) {
+				else if (userInput.equals(Character.toString(CmdType.Left.value))) {
+					//execute turn left action
 					cmd_left.action();
 				}
-				else if(userInput.equals("r")) {
+				else if(userInput.equals(Character.toString(CmdType.Right.value))) {
+					//execute turn right action
 					cmd_right.action();
 				}
 				else {
@@ -118,8 +104,7 @@ public class SCS_Main {
 		
 		//say good bye
 		printOutEnding();
-		
-		site.showMap();
+		//site.showMap();
 
 	}
 	
@@ -135,7 +120,7 @@ public class SCS_Main {
 	 * print out instruction message
 	 */
 	private static void printOutInstruction() {
-		System.out.println("\nThe bulldozer is currently located at the northen Edge of the site, immediately to the West of the site, and facing Easy. \n");
+		System.out.println("\nThe bulldozer is currently located at the northen Edge of the site, immediately to the West of the site, and facing East. \n");
 	}
 	
 	/*
@@ -149,7 +134,7 @@ public class SCS_Main {
 	 * print out ending message
 	 */
 	private static void printOutEnding() {
-		System.out.println("\nThanks for using the site clearning simulator \n");
+		System.out.println("\nThanks for using the site clearning simulator. \n ");
 	}
 	
 	/*
