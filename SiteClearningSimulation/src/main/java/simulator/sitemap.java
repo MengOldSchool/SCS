@@ -54,14 +54,21 @@ public class sitemap {
 		//find the sizes (row, column) of the map
 		site_size_row = linePointer.size();
 		//????? need to check the consistency of all lines ????
-		char[] cur =(linePointer.get(1)).toCharArray();
-		site_size_column = cur.length;
-		
-		//create a new map with the right size and assign the land type
-		myMap = new char[site_size_row][site_size_column];
-		for (int i = 0; i<linePointer.size(); i++){
-			//System.out.println(curLine[i]);
-			myMap[i] = (linePointer.get(i)).toCharArray();
+		if (site_size_row <=0){
+			this.myMap = new char[][] {{'o', 'o'}, {'t', 't'}};
+			System.out.println("However, the map file contains zero land, a default map is used. \n");
+		}
+		else{
+			char[] cur =(linePointer.get(0)).toCharArray();
+			site_size_column = cur.length;
+			
+			//create a new map with the right size and assign the land type
+			myMap = new char[site_size_row][site_size_column];
+			for (int i = 0; i<linePointer.size(); i++){
+				//System.out.println(curLine[i]);
+				myMap[i] = (linePointer.get(i)).toCharArray();
+			}
+			
 		}
 				
 	}
@@ -86,23 +93,27 @@ public class sitemap {
 		br.close();
 		fr.close();
 		
-			
 		//find the sizes (row, column) of the map
 		site_size_row = linePointer.size();
 		//????? need to check the consistency of all lines ????
-		char[] cur =(linePointer.get(1)).toCharArray();
-		site_size_column = cur.length;
-		
-		//create a new map with the right size and assign the land type
-		myMap = new char[site_size_row][site_size_column];
-		for (int i = 0; i<linePointer.size(); i++){
-			//System.out.println(curLine[i]);
-			myMap[i] = (linePointer.get(i)).toCharArray();
+		if (site_size_row <=0){
+			this.myMap = new char[][] {{'o', 'o'}, {'t', 't'}};
+			System.out.println("However, the map file contains zero land, a default map is used. \n");
+		}
+		else{
+			char[] cur =(linePointer.get(0)).toCharArray();
+			site_size_column = cur.length;
+			
+			//create a new map with the right size and assign the land type
+			myMap = new char[site_size_row][site_size_column];
+			for (int i = 0; i<linePointer.size(); i++){
+				//System.out.println(curLine[i]);
+				myMap[i] = (linePointer.get(i)).toCharArray();
+			}
+			
 		}
 				
 	}
-
-
 
 	/*
 	 * method to update the map based on the command

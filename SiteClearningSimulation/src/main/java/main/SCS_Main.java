@@ -22,6 +22,8 @@ public class SCS_Main {
 		user operator = new user();
 		sitemap site = null;	
 		
+		
+		
 		//setup site map, a default map will be used, if not defined by user
 		if (args.length == 0) {
 			System.out.println("\nSimulation will use a site map \n");
@@ -41,6 +43,7 @@ public class SCS_Main {
 		command_quit cmd_quit = new command_quit(site,result);
 		
 		//display the map and instructions
+		//Show the welcome message
 		printOutWelMsg();
 		site.showMap();
 		printOutInstruction(); 
@@ -113,7 +116,7 @@ public class SCS_Main {
 	 * print out welcome message
 	 */
 	private static void printOutWelMsg() {
-		System.out.println("\nWelcome to Site Clearning Simulator. This is a map of the site:\n");
+		System.out.println("\nWelcome to the Aconex Site Clearning Simulator. This is a map of the site:\n");
 	}
 	
 	/*
@@ -134,7 +137,7 @@ public class SCS_Main {
 	 * print out ending message
 	 */
 	private static void printOutEnding() {
-		System.out.println("\nThanks for using the site clearning simulator. \n ");
+		System.out.println("\nThanks for using the Aconex site clearning simulator. \n ");
 	}
 	
 	/*

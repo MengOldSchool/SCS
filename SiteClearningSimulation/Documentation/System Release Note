@@ -36,3 +36,6 @@ Future improvements:
 - error handling for map loader not implemented
 - bulldozer class, use Enum instead of hard code for better readability
 
+History:
+R1.1: fixed a bug - loading map with no contents
+
