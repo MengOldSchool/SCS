@@ -20,27 +20,21 @@ import java.util.ArrayList;
  */
 public class sitemap {
 	
-	private static char[][] myMap;
-	private static int site_size_row;
-	private static int site_size_column;
+	private char[][] myMap;
+	private int site_size_row;
+	private int site_size_column;
 
-
-
-	
 	/*
-	 * constructor for static test
+	 * constructor for default map
 	 */
 	public sitemap() {
-		site_size_column = 2;
-		site_size_row = 2;
-		//myMap = new char[site_size_row][site_size_column];
-		myMap = new char[][] {{'o', 'o'}, {'t', 't'}};
-		
-			
+		this.site_size_column = 2;
+		this.site_size_row = 2;
+		this.myMap = new char[][] {{'o', 'o'}, {'t', 't'}};
 	}
 	
 	/*
-	 * constructor - read the text file as input	
+	 * constructor - get the map from a file	
 	 */
 	public sitemap(File f) throws IOException{
 		FileReader fr = new FileReader(f);
@@ -48,7 +42,7 @@ public class sitemap {
 		ArrayList <String> linePointer = new ArrayList<>();
 		String line;
 		
-			
+		
 		while((line = br.readLine()) != null) {
 			//System.out.println(line);
 			linePointer.add(line);					
@@ -59,7 +53,7 @@ public class sitemap {
 			
 		//find the sizes (row, column) of the map
 		site_size_row = linePointer.size();
-		//????? need to check the consistence of all lines ????
+		//????? need to check the consistency of all lines ????
 		char[] cur =(linePointer.get(1)).toCharArray();
 		site_size_column = cur.length;
 		
@@ -68,12 +62,48 @@ public class sitemap {
 		for (int i = 0; i<linePointer.size(); i++){
 			//System.out.println(curLine[i]);
 			myMap[i] = (linePointer.get(i)).toCharArray();
-		}	
+		}
 				
 	}
 	
+	/*
+	 * constructor - get the map, input -> the file name	
+	 */
+	public sitemap(String fileName) throws IOException{
+		//prepare for file reading
+		File f = new File(fileName);
+		FileReader fr = new FileReader(f);
+		BufferedReader br = new BufferedReader(fr);
+		ArrayList <String> linePointer = new ArrayList<>();
+		String line;
+		
+		
+		
+		while((line = br.readLine()) != null) {
+			//System.out.println(line);
+			linePointer.add(line);					
+		}
+		br.close();
+		fr.close();
+		
+			
+		//find the sizes (row, column) of the map
+		site_size_row = linePointer.size();
+		//????? need to check the consistency of all lines ????
+		char[] cur =(linePointer.get(1)).toCharArray();
+		site_size_column = cur.length;
+		
+		//create a new map with the right size and assign the land type
+		myMap = new char[site_size_row][site_size_column];
+		for (int i = 0; i<linePointer.size(); i++){
+			//System.out.println(curLine[i]);
+			myMap[i] = (linePointer.get(i)).toCharArray();
+		}
+				
+	}
 
-	
+
+
 	/*
 	 * method to update the map based on the command
 	 * return true if the update is successful
@@ -82,7 +112,9 @@ public class sitemap {
 		//check if the update is allowed
 		if (pos_x <= (this.site_size_row -1) && pos_y <=(this.site_size_column - 1)) {
 			if (this.myMap[pos_x][pos_y] != 'T'){
-				this.myMap[pos_x][ pos_y] = 'o';
+				//clear the map with o
+				//mark the place as 'y' to indicate it has been visited
+				this.myMap[pos_x][ pos_y] = 'y';
 				return true;
 			}
 			else
@@ -117,7 +149,7 @@ public class sitemap {
 		
 		for (int i=0; i<site_size_row; i++) {
 			for (int j=0; j<site_size_column; j++) {
-				if (myMap[i][j] == 'r' || myMap[i][j] == 't') {
+				if (!(myMap[i][j] == 'y') && !(myMap[i][j] == 'T')) {
 					numUnclearedLand ++;
 				}
 			}
@@ -132,30 +164,31 @@ public class sitemap {
 	public char getLandType(int x, int y) {
 		return myMap[x][y];
 	}
+	
+	
 	/*
-	 * getter: return the map pointer
+	 * getter: return the number of row
 	 */
-	public char[][] getMyMap() {
-		return myMap;
-	}
-
 	public int getSite_size_row() {
 		return site_size_row;
 	}
 
-	
+	/*
+	 * getter: return the number of column
+	 */
 	public int getSite_size_column() {
 		return site_size_column;
 	}
 	
-	
+	/*
+	 * method to manual set a test map
+	 */
 	public void setTestMap(char[][] testMap, int row_size, int col_size) {
 		myMap = testMap;
 		site_size_row = row_size;
 		site_size_column = col_size;
 	}
 
-		
 
 	
 }

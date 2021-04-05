@@ -53,11 +53,6 @@ public class reportTables {
 	public String[] getItemName() {
 		return ItemName;
 	}
-	
-	public void operationCost(String operation) {};
-	
-	public void printReport() {};
-	
 
 	public HashMap<String, Integer> getActivityFuelTable() {
 		return ActivityFuel;
@@ -65,4 +60,5 @@ public class reportTables {
 	public HashMap<String, Integer> getItemCostTable() {
 		return ItemCost;
 	}
+	
 }

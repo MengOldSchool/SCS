@@ -111,18 +111,22 @@ public class command_advance extends commandInterface{
 				if (land_type == 't') {
 					//hit a tree and repairing paint damage required
 					//System.out.println("debug01");
+					map.updateMap(new_pos_x, new_pos_y);
+					result.activityFuel(ActTypeEnum.ActClrTree.value);
 					result.operationCost(OpTypeEnum.OpRepDmg.value);
 				}
 				else if(land_type == 'o') {
 					//visiting a cleared land
 					//System.out.println("debug02");
+					map.updateMap(new_pos_x, new_pos_y);
 					result.activityFuel(ActTypeEnum.ActVisCldLd.value);
 				}
 				else if(land_type == 'r') {
 					//visiting rocky land, so clear it, update the map
 					//System.out.println("debug03");
-					result.activityFuel(ActTypeEnum.ActClrRL.value);
 					map.updateMap(new_pos_x, new_pos_y);
+					result.activityFuel(ActTypeEnum.ActClrRL.value);
+					
 				}
 			}
 			else {
@@ -131,19 +135,22 @@ public class command_advance extends commandInterface{
 				if(land_type == 'o') {
 					//clearing plain land
 					//System.out.println("debug04");
+					map.updateMap(new_pos_x, new_pos_y);
 					result.activityFuel(ActTypeEnum.ActClrPL.value);				
 				}
 				else if(land_type == 'r') {
 					//clearing rocky land, update the map
 					//System.out.println("debug05");
-					result.activityFuel(ActTypeEnum.ActClrRL.value);
 					map.updateMap(new_pos_x, new_pos_y);
+					result.activityFuel(ActTypeEnum.ActClrRL.value);
+					
 				}
 				else if(land_type == 't') {
 					//clearing tree, update the map
 					//System.out.println("debug06");
-					result.activityFuel(ActTypeEnum.ActClrTree.value);
 					map.updateMap(new_pos_x, new_pos_y);
+					result.activityFuel(ActTypeEnum.ActClrTree.value);
+					
 				}
 			}
 		

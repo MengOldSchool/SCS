@@ -1,5 +1,8 @@
 package main;
 
+import java.io.File;
+import java.io.IOException;
+
 import commandHandler.command_advance;
 import commandHandler.command_left;
 import commandHandler.command_quit;
@@ -12,13 +15,25 @@ import userInterface.user;
 
 public class SCS_Main {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		//setup simulation environment  
 		bulldozer veh = new bulldozer();
-		sitemap site = new sitemap();
 		report result = new report();
 		user operator = new user();
+		sitemap site = null;	
 		
+		//setup site map, a default map will be used, if not defined by user
+		if (args.length == 0) {
+			System.out.println("\nSimulation will use a site map \n");
+			site = new sitemap();
+			
+		}
+		else
+		{
+			System.out.println("\nLoad the site map from  the file " + args[0] + ".");
+			site = new sitemap(args[0]);			
+		}
+			
 		//declare command objects
 		command_advance cmd_adv = new command_advance(veh, site, result);
 		command_left cmd_left = new command_left(veh, result);
@@ -43,16 +58,19 @@ public class SCS_Main {
 				//Valid user input, run the simulation accordingly
 				userInput = operator.curValidCmd();
 				
-				//Execute the user command
-				if (userInput.equals("q"))
+				//Execute the user command				
+				if (userInput.equals(Character.toString(CmdType.Quit.value)))
 				{
+					//execute quit action
 					cmd_quit.action();
 					IsFinished = true;
 				}
-				else if (userInput.equals("l")) {
+				else if (userInput.equals(Character.toString(CmdType.Left.value))) {
+					//execute turn left action
 					cmd_left.action();
 				}
-				else if(userInput.equals("r")) {
+				else if(userInput.equals(Character.toString(CmdType.Right.value))) {
+					//execute turn right action
 					cmd_right.action();
 				}
 				else {
@@ -86,6 +104,7 @@ public class SCS_Main {
 		
 		//say good bye
 		printOutEnding();
+		//site.showMap();
 
 	}
 	
@@ -101,7 +120,7 @@ public class SCS_Main {
 	 * print out instruction message
 	 */
 	private static void printOutInstruction() {
-		System.out.println("\nThe bulldozer is currently located at the northen Edge of the site, immediately to the West of the site, and facing Easy. \n");
+		System.out.println("\nThe bulldozer is currently located at the northen Edge of the site, immediately to the West of the site, and facing East. \n");
 	}
 	
 	/*
@@ -115,7 +134,7 @@ public class SCS_Main {
 	 * print out ending message
 	 */
 	private static void printOutEnding() {
-		System.out.println("\nThanks for using the site clearning simulator \n");
+		System.out.println("\nThanks for using the site clearning simulator. \n ");
 	}
 	
 	/*
@@ -129,8 +148,18 @@ public class SCS_Main {
 	 * print out all the commands
 	 */
 	private static void printOutCmdMsg() {
-		System.out.println("\nThis Simulation has ended at your request. There are the commands you issued \n");
+		System.out.println("\nThis Simulation has ended at your request. There are the commands you issued:\n");
 	}
+	
+	/*
+	 * print out no file error message
+	 */
+	private static void printOutNoFileError() {
+		System.out.println("\nSorry, not able to find the site map. Please ensure the site map located at the same directory\n");
+		System.exit(0);
+	}
+	
+	
 
 }
 

@@ -5,44 +5,55 @@
     <id>UMLClass</id>
     <coordinates>
       <x>837</x>
-      <y>1107</y>
-      <w>252</w>
-      <h>117</h>
+      <y>855</y>
+      <w>342</w>
+      <h>144</h>
     </coordinates>
     <panel_attributes>bg=cyan
-:command
-
-
+reportTables
 --
-HashMap:ActivityFuelTable
-HashMap:OperationCostTable</panel_attributes>
+final ActivityFuel:HashMap&lt;String, Integer&gt;)
+final ActivityName: String[]
+final ItamCost:HashMap&lt;String, Integer&gt;)
+final ItemName:String[]
+--
++reportTables
++getActivityName:String[]
++getItemName:String[]</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>828</x>
-      <y>180</y>
-      <w>243</w>
-      <h>126</h>
+      <x>837</x>
+      <y>81</y>
+      <w>351</w>
+      <h>225</h>
     </coordinates>
-    <panel_attributes>bg=green
-:sitemap
+    <panel_attributes>bg=orange
+sitemap
 --
-size_of_site_row
-size_of_site_column
+-myMap:char[][]
+-size_of_site_row:int
+-size_of_site_column:int
 --
-updateMap()
-showMap()
-getLandType()
-getNumUncleardLand()</panel_attributes>
++sitemap()
++sitemap(File)
++sitemap(String)
++updateMap(int, int):boolean
++showMap()
++getNumUnclearLand():int
++getLandType(int, int)
++getSite_size_row:int
++getSite_size_column:int
++setTestMap[char[][], int, int)</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>459</x>
-      <y>945</y>
+      <x>1431</x>
+      <y>999</y>
       <w>207</w>
       <h>99</h>
     </coordinates>
@@ -58,8 +69,8 @@ OpRepDmg</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>459</x>
-      <y>1071</y>
+      <x>1656</x>
+      <y>999</y>
       <w>207</w>
       <h>99</h>
     </coordinates>
@@ -74,266 +85,398 @@ ActClrTree</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>828</x>
-      <y>846</y>
-      <w>252</w>
-      <h>162</h>
+      <x>837</x>
+      <y>639</y>
+      <w>342</w>
+      <h>171</h>
     </coordinates>
     <panel_attributes>bg=cyan
-:report
+report
 --
-HashMap:quantity result
-HashMap:cost result
+-result_quantity(HashMap&lt;String, Integer&gt;)
+-result_cost(HashMap&lt;String, Integer&gt;)
 --
-printReport()
-operationCost(OpCmdEnum)
-operationCost() - uncleared land
-activityFuel(ActTypeEnum)</panel_attributes>
++report()
++printReport()
++operationCost(String)
++operationCost(int)
++activityFuel(String)
++getResult_quantity(HashMap&lt;String, Integer&gt;
++getResult_cost(HashMap&lt;String, Integer&gt;)
+</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>900</x>
-      <y>999</y>
+      <x>909</x>
+      <y>801</y>
       <w>27</w>
-      <h>126</h>
+      <h>72</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;120.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;60.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1143</x>
-      <y>477</y>
-      <w>333</w>
-      <h>270</h>
+      <x>1188</x>
+      <y>414</y>
+      <w>315</w>
+      <h>180</h>
     </coordinates>
     <panel_attributes>bg=black
-:main
+SCS_Main
 --
+-veh:bulldozer
+-result:report
+-operator:user
+-site:sitemap
+-com_adv:command_advance
+-com_left:command_lef
+-com_right:command_right
+-com_qui:command_quit
 
---
+
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>441</x>
-      <y>639</y>
-      <w>207</w>
+      <x>27</x>
+      <y>414</y>
+      <w>342</w>
       <h>126</h>
     </coordinates>
     <panel_attributes>bg=blue
-:command_quit
+command_quit
 --
-
+-map:sitemap
+-result:report
 --
++command_quit(sitemap, report)
++action()
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>441</x>
-      <y>477</y>
-      <w>207</w>
+      <x>27</x>
+      <y>576</y>
+      <w>342</w>
+      <h>108</h>
+    </coordinates>
+    <panel_attributes>bg=blue
+command_right
+--
+-veh:bulldozer
+-result:report
+--
++command_right(bulldozer, report)
++action()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>459</x>
+      <y>450</y>
+      <w>360</w>
       <h>126</h>
     </coordinates>
     <panel_attributes>bg=blue
-:command_turn
+Abstract:commandInterface
 --
-
---
-</panel_attributes>
++commandInterface()
++action()
++getStatus():boolean
++decodeCmd()</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>441</x>
-      <y>333</y>
-      <w>207</w>
-      <h>126</h>
-    </coordinates>
-    <panel_attributes>bg=blue
-:command_advance
---
-
---
-</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>828</x>
-      <y>333</y>
-      <w>252</w>
-      <h>126</h>
+      <x>837</x>
+      <y>1035</y>
+      <w>342</w>
+      <h>225</h>
     </coordinates>
     <panel_attributes>bg=orange
-:bulldozer
+bulldozer
 --
-x
-y
-dirction
+-pos_x:int
+-pos_y:int
+-dirction:int
 --
-turnright()
-turnleft()
-advance(step)</panel_attributes>
++bulldozer(int, int, int)
++turnright()
++turnleft()
++advance(int)
++quit()
++getPos_x:int
++getPos_y:int
++getDirection:int
++whereIsVeh()</panel_attributes>
     <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>675</x>
-      <y>198</y>
-      <w>171</w>
-      <h>99</h>
-    </coordinates>
-    <panel_attributes/>
-    <additional_attributes>170.0;20.0;10.0;20.0;10.0;90.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>729</x>
-      <y>936</y>
-      <w>117</w>
-      <h>36</h>
-    </coordinates>
-    <panel_attributes/>
-    <additional_attributes>110.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1548</x>
-      <y>477</y>
+      <x>1755</x>
+      <y>414</y>
       <w>252</w>
-      <h>162</h>
+      <h>180</h>
     </coordinates>
     <panel_attributes>bg=light_gray
-:user
+user
 --
+-in:Scanner
+-input:String
+-userCmd:List&lt;String&gt;
+-validCmd:String
+--
++user()
++readInput:boolean
++endInput()
++showAllCmd()
++curValidCmd:String
+-checkInput():boolean</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1494</x>
+      <y>495</y>
+      <w>279</w>
+      <h>99</h>
+    </coordinates>
+    <panel_attributes>Requst user's input - readInput() &gt;
+Read command - curValidCmd() &gt;
+List all user commands - showAllCmd()
+End user's input - endInput() &gt;
 
---
 </panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>720</x>
-      <y>558</y>
-      <w>441</w>
-      <h>36</h>
-    </coordinates>
-    <panel_attributes/>
-    <additional_attributes>10.0;20.0;470.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>1467</x>
-      <y>549</y>
-      <w>99</w>
-      <h>36</h>
-    </coordinates>
-    <panel_attributes/>
-    <additional_attributes>90.0;20.0;10.0;20.0</additional_attributes>
+    <additional_attributes>290.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>414</x>
-      <y>279</y>
-      <w>315</w>
-      <h>549</h>
-    </coordinates>
-    <panel_attributes>lt=.
-Collection of Commands</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>414</x>
-      <y>909</y>
-      <w>324</w>
+      <x>1395</x>
+      <y>972</y>
+      <w>522</w>
       <h>288</h>
     </coordinates>
     <panel_attributes>lt=.
-Operation and Activity Enum</panel_attributes>
+System Enum</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>720</x>
-      <y>360</y>
-      <w>126</w>
-      <h>36</h>
-    </coordinates>
-    <panel_attributes/>
-    <additional_attributes>10.0;20.0;120.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>720</x>
-      <y>783</y>
-      <w>180</w>
-      <h>81</h>
-    </coordinates>
-    <panel_attributes/>
-    <additional_attributes>180.0;70.0;180.0;10.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>450</x>
-      <y>819</y>
-      <w>27</w>
-      <h>108</h>
-    </coordinates>
-    <panel_attributes/>
-    <additional_attributes>10.0;100.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>1071</x>
-      <y>738</y>
-      <w>297</w>
+      <x>513</x>
+      <y>567</y>
+      <w>342</w>
       <h>171</h>
     </coordinates>
-    <panel_attributes/>
-    <additional_attributes>10.0;170.0;310.0;170.0;310.0;10.0</additional_attributes>
+    <panel_attributes>Get operation cost - operationCost() &gt;
+Get activity fuel - activityFuel() &gt;</panel_attributes>
+    <additional_attributes>360.0;160.0;10.0;160.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1071</x>
-      <y>405</y>
-      <w>153</w>
-      <h>90</h>
+      <x>1170</x>
+      <y>585</y>
+      <w>315</w>
+      <h>117</h>
     </coordinates>
-    <panel_attributes/>
-    <additional_attributes>10.0;20.0;150.0;20.0;150.0;80.0</additional_attributes>
+    <panel_attributes>&lt; Request to display result - printReport()</panel_attributes>
+    <additional_attributes>10.0;110.0;330.0;110.0;330.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>27</x>
+      <y>180</y>
+      <w>342</w>
+      <h>189</h>
+    </coordinates>
+    <panel_attributes>bg=blue
+command_advance
+--
+-CompleteSuccess:boolean
+-forwardStep:int
+-veh:bulldozer
+-result:report
+-map:sitemap
+--
++command_advance(bulldozer, sitemap, report)
++action()
++getStatus(String):boolean
++decodeCmd(String)
+-inside(int, int, int, int):boolean</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>27</x>
+      <y>765</y>
+      <w>342</w>
+      <h>108</h>
+    </coordinates>
+    <panel_attributes>bg=blue
+command_left
+--
+-veh:bulldozer
+-result:report
+--
++command_right(bulldozer, report)
++action()</panel_attributes>
+    <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1062</x>
-      <y>234</y>
-      <w>297</w>
-      <h>261</h>
+      <x>360</x>
+      <y>216</y>
+      <w>117</w>
+      <h>297</h>
     </coordinates>
-    <panel_attributes/>
-    <additional_attributes>10.0;20.0;310.0;20.0;310.0;270.0</additional_attributes>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>110.0;310.0;70.0;310.0;70.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>360</x>
+      <y>486</y>
+      <w>117</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>110.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>360</x>
+      <y>486</y>
+      <w>117</w>
+      <h>162</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>110.0;10.0;70.0;10.0;70.0;160.0;10.0;160.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>360</x>
+      <y>486</y>
+      <w>117</w>
+      <h>351</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>110.0;10.0;70.0;10.0;70.0;370.0;10.0;370.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>576</x>
+      <y>216</y>
+      <w>333</w>
+      <h>252</h>
+    </coordinates>
+    <panel_attributes>
+Find out unclear land - getNumUnclearLand()  &gt;
+Find out type of land - getLandType() &gt;
+Find out site size - getSite_size_row() &gt;
+Find out site size - getSite_size_column &gt;
+Update map - updateMap() &gt;</panel_attributes>
+    <additional_attributes>10.0;260.0;10.0;10.0;290.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1179</x>
+      <y>207</y>
+      <w>414</w>
+      <h>225</h>
+    </coordinates>
+    <panel_attributes>&lt; Request show site map - showMap()
+
+
+
+
+
+</panel_attributes>
+    <additional_attributes>170.0;230.0;170.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1656</x>
+      <y>1134</y>
+      <w>207</w>
+      <h>99</h>
+    </coordinates>
+    <panel_attributes>Enum:CmdType
+--
+Adv('a')
+Left('l')
+Right('r)
+Quit('q')</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1431</x>
+      <y>1134</y>
+      <w>207</w>
+      <h>99</h>
+    </coordinates>
+    <panel_attributes>Enum:LandType
+--
+o
+r
+t
+T</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>810</x>
+      <y>504</y>
+      <w>396</w>
+      <h>81</h>
+    </coordinates>
+    <panel_attributes>
+&lt; Execute - action()
+&lt; Get Cmd status - getStatus()
+&lt; Request to decode command - decodeCmd()
+</panel_attributes>
+    <additional_attributes>10.0;20.0;420.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>486</x>
+      <y>567</y>
+      <w>369</w>
+      <h>639</h>
+    </coordinates>
+    <panel_attributes>
+Run bulldozer - turnleft() &gt;
+Run bulldozer - turnright() &gt;
+Run bulldozer - quit() &gt;
+Run bulldozer - advance() &gt;
+Get bulldozer position - getPos_x() &gt;
+Get bulldozer position - getPos_y () &gt;</panel_attributes>
+    <additional_attributes>390.0;600.0;10.0;600.0;10.0;10.0</additional_attributes>
   </element>
 </diagram>

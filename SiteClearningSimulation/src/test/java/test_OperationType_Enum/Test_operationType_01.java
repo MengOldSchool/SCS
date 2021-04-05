@@ -26,7 +26,7 @@ public class Test_operationType_01 {
 		assertSame (OpTypeEnum.OpDesResTree.value, expect[3]);
 		assertSame (OpTypeEnum.OpRepDmg.value, expect[4]);
 		
-		System.out.println(OpTypeEnum.OpComm.value);
+		//System.out.println(OpTypeEnum.OpComm.value);
 	}
 
 }
