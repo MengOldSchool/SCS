@@ -10,18 +10,18 @@ import systemEnum.OpTypeEnum;
 
 public class command_quit extends commandInterface{
 	
-	/*
-	 * constructor
-	 */
+	
 	private sitemap map;
 	private report result;
 	
+	/*
+	 * constructor
+	 */
 	public command_quit(sitemap mapIn, report resultIn){
 		map = mapIn;
 		result = resultIn;
 	}
-	
-	
+
 	/*
 	 * override action
 	 */
@@ -30,20 +30,7 @@ public class command_quit extends commandInterface{
 		//update the cost for uncleared land
 		int numUncleardLand = map.getNumUnclearedLand();
 		result.operationCost(numUncleardLand);
-		
-		//update the cost for comm overhead
-		//result.operationCost(OpTypeEnum.OpComm.value);
-	}
 
-	/*
-	public void action(sitemap map, report result) {
-		//update the cost for uncleared land
-		int numUncleardLand = map.getNumUnclearedLand();
-		result.operationCost(numUncleardLand);
-		
-		//update the cost for comm overhead
-		result.operationCost(OpTypeEnum.OpComm.value);
 	}
-	*/
 
 }

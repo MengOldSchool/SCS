@@ -164,13 +164,8 @@ public class sitemap {
 	public char getLandType(int x, int y) {
 		return myMap[x][y];
 	}
-	/*
-	 * getter: return the map pointer
-	 */
-	public char[][] getMyMap() {
-		return myMap;
-	}
-
+	
+	
 	/*
 	 * getter: return the number of row
 	 */
