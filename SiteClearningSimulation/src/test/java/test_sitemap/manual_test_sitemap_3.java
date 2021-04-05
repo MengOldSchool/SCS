@@ -22,10 +22,12 @@ public class manual_test_sitemap_3 {
 			testObj.showMap();
 			
 			boolean result = testObj.updateMap(0, 3);
+			char landtype = testObj.getLandType(0, 3);
 			System.out.println();
 			testObj.showMap();
 			
 			assertEquals(result, true);
+			assertEquals(landtype, 'y');
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

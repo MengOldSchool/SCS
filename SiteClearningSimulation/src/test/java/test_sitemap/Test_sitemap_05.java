@@ -37,20 +37,20 @@ public class Test_sitemap_05 {
 			
 			//test: get the number of unclear land
 			int numUnCleLand = testObj.getNumUnclearedLand();
-			assertEquals(numUnCleLand, 15);
+			assertEquals(numUnCleLand, 38);
 			
 			//test: clear r, number of uncleared land is reduced
 			boolean result = testObj.updateMap(2, 2);
 			numUnCleLand = testObj.getNumUnclearedLand();
 			assertEquals(result, true);
-			assertEquals(numUnCleLand, 14);
+			assertEquals(numUnCleLand, 37);
 			
 			
 			//test: clear the tree
 			result = testObj.updateMap(0, 3);
 			numUnCleLand = testObj.getNumUnclearedLand();
 			assertEquals(result, true);
-			assertEquals(numUnCleLand, 13);
+			assertEquals(numUnCleLand, 36);
 			
 			
 			

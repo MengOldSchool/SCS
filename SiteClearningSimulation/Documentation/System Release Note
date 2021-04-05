@@ -1,0 +1,36 @@
+
+How to run the program:
+- ensure *.jar and a site map located at the same folder
+- site map must be a text file
+- run the simulation at the command line as: java -jar *.jap <"YouMapFile.txt">
+- if a map is not defined, a default map will be used. 
+- E.g of command line: Java -jar SiteClearningSimulation-0.0.1-SNAPSHOT.jar "site_map.txt"
+
+
+Build Environment
+- Apache Maven 3.6.3
+- Java version: 
+	java version "15.0.2" 2021-01-19
+	Java(TM) SE Runtime Environment (build 15.0.2+7-27)
+	Java HotSpot(TM) 64-Bit Server VM (build 15.0.2+7-27, mixed mode, sharing)
+	Default locale: en_AU, platform encoding: UTF-8
+	OS name: "linux", version: "5.8.0-48-generic", arch: "amd64", family: "unix"
+
+- OS: 
+  	Operating System: Ubuntu 20.10
+  	Kernel: Linux 5.8.0-48-generic
+  	Architecture: x86-64
+
+- IDE:
+	Eclipse IDE for Java Developers
+	Version: 2020-12 (4.18.0)
+	Build id: 20201210-1552
+
+Known issue:
+- Compiling Warning to be investigated
+	WARNING: An illegal reflective access operation has occurred
+
+Future improvements:
+- “userInterface” test case was not fully integrated to maven test process. 
+- design an error handler module for the whole system, e.g, a centre module to handle all the errors from other modules
+

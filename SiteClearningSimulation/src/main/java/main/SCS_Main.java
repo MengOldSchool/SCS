@@ -24,18 +24,19 @@ public class SCS_Main {
 		
 		//setup site map, a default map will be used, if not defined by user
 		if (args.length == 0) {
-			System.out.println("Simulation will use a site map \n");
+			System.out.println("\nSimulation will use a site map \n");
 			site = new sitemap();
 			
 		}
 		else
 		{
-			System.out.println("Load the site map from  the file " + args[0] + ".");
-			site = new sitemap();
+			System.out.println("\nLoad the site map from  the file " + args[0] + ".");
+			//site = new sitemap();
 			
 			//File f = new File(args[0]);
 			String localDir = System.getProperty("user.dir");		
-			File f = new File(localDir + "//src//main//java//main//" + args[0]);
+			//File f = new File(localDir + "//src//main//java//main//" + args[0]);
+			File f = new File(args[0]);
 			
 			
 			try {
@@ -44,6 +45,8 @@ public class SCS_Main {
 				} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+				printOutNoFileError();
+				
 			}
 			
 		}
@@ -162,6 +165,16 @@ public class SCS_Main {
 	private static void printOutCmdMsg() {
 		System.out.println("\nThis Simulation has ended at your request. There are the commands you issued:\n");
 	}
+	
+	/*
+	 * print out no file error message
+	 */
+	private static void printOutNoFileError() {
+		System.out.println("\nSorry, not able to find the site map. Please ensure the site map located at the same directory\n");
+		System.exit(0);
+	}
+	
+	
 
 }
 

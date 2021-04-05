@@ -41,9 +41,9 @@ public class Test_command_quit_01 {
 			expect_item[4]= OpTypeEnum.OpRepDmg.value;
 			
 			int[] expect_cost = new int[5];
-			expect_cost[0] = 1;
+			expect_cost[0] = 0;
 			expect_cost[1] = 0;
-			expect_cost[2] = 6;
+			expect_cost[2] = 12;
 			expect_cost[3] = 0;
 			expect_cost[4] = 0;
 			

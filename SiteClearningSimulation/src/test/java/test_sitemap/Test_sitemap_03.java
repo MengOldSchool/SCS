@@ -37,8 +37,8 @@ public class Test_sitemap_03 {
 			boolean result = testObj.updateMap(0, 3);
 			char landtype = testObj.getLandType(0, 3);
 		
-			
-			assertEquals(landtype, 'o');
+			assertEquals(result, true);
+			assertEquals(landtype, 'y');
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
